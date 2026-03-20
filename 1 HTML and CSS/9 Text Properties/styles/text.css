@@ -1,0 +1,18 @@
+.my-text {
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: rgb(175, 25, 157);
+}
+
+.your-text {
+  line-height: 20px;
+  font-size: 15px;
+  font-weight: 700;
+  font-style: italic;
+  font-family: "Playwrite NZ", cursive;
+}
+
+#kg-link {
+  text-decoration: none;
+}
