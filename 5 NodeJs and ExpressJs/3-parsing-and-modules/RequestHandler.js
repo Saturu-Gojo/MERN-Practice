@@ -27,6 +27,8 @@ const requestHandler = (req, res) => {
             </body>
             </html>
         `);
+                // Always call end() to tell the browser you're finished sending data
+        res.end('Done!');
     } else if (req.url === "/products") {
         res.write(`
             <!DOCTYPE html>
@@ -37,6 +39,8 @@ const requestHandler = (req, res) => {
             </body>
             </html>
         `);
+                // Always call end() to tell the browser you're finished sending data
+        res.end();
     }else if(req.url === "/buy-product" ){
         console.log("Form Data Recieved");
         const arr = [];
@@ -53,21 +57,28 @@ const requestHandler = (req, res) => {
             for(const [key,value] of URLParam.entries()){
                 bodyJson[key]=value;
             }
-            fs.writeFileSync('buy.txt',JSON.stringify(bodyJson));
-        })
+            fs.writeFile('buy.txt',JSON.stringify(bodyJson),()=>{
+
+                res.statusCode=302;
+                res.setHeader('Location', '/products');   
+                console.log(bodyJson)
+                res.end();  
+            });
+        });
         
-        res.statusCode=302;
-        res.setHeader('Location', '/products');
+        // res.statusCode=302;
+        // res.setHeader('Location', '/products');
         
 
     }else {
         res.statusCode=404;
         // Handle 404 - Page Not Found
         res.write('<h1>404: Page Not Found</h1>');
+        // Always call end() to tell the browser you're finished sending data
+        res.end();
     }
-
-    // Always call end() to tell the browser you're finished sending data
-    res.end('Done!');
 }
+
+    
 
 module.exports = requestHandler;
