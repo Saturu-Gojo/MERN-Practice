@@ -28,7 +28,7 @@ const requestHandler = (req, res) => {
             </html>
         `);
                 // Always call end() to tell the browser you're finished sending data
-        res.end('Done!');
+        res.end();
     } else if (req.url === "/products") {
         res.write(`
             <!DOCTYPE html>
