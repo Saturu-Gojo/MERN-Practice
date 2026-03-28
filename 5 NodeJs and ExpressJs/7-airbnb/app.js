@@ -1,38 +1,27 @@
+//core module
+const path = require('path');
 
+
+//external module
 const express = require('express');
 
 const fs = require('fs');
 const bodyParser = require('body-parser');
 
+//Local Modeule
+const hostRouter = require('./routers/hostRouter');
+const storeRouter = require('./routers/store');
+
 const app = express();
 
-app.use(bodyParser, urlencoded());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(storeRouter);
+app.use("/host",hostRouter);
+
 
 app.use((req,res, next)=>{
-    console.log('Handling request for:', req.url, req.method, req.body);
-   next();
-
-});
-
-
-app.get("/",(req,res, next)=>{
-    res.send(`<!DOCTYPE html>
-            <html lang="en">
-            <head>
-                
-                <title>Myntra</title>
-            </head>
-            <body>
-                <h1>Welcome to First Server: IMMORTAL CODER</h1>
-                <form action="/buy-product" method="POST" >
-                    <input type="text" placeholder = "Enter the Product" name="productname">
-                    <input type="Number" placeholder = "Enter the Price" name="Price">
-                    <input type="submit">
-                </form>
-                
-            </body>
-            </html>
-        `);
+    res.statusCode=404;
+    res.sendFile(path.join(__dirname, "views","404.html"));
 });
 
 
