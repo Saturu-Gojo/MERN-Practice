@@ -2,11 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <title>Home Added</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listing Published | Hamara airbnb</title>
+    <link rel="stylesheet" href="/style/output.css">
 </head>
-<body>
-    <h1>Home Added Succesfully</h1>
-    <a href="/">Go to Home</a>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen antialiased p-4">
+
+    <div class="bg-white p-10 rounded-3xl shadow-2xl shadow-gray-200/70 w-full max-w-lg border border-gray-100 text-center transform transition-all hover:scale-[1.01]">
+        
+        <div class="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-rose-100 border-4 border-white shadow-lg">
+            <svg class="h-10 w-10 text-rose-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+        </div>
+
+        <h1 class="text-4xl font-extrabold text-gray-950 mb-3 tracking-tight">Listing published!</h1>
+        
+        <p class="text-gray-600 mb-10 text-lg leading-relaxed max-w-md mx-auto">
+            Congratulations! Your home has been successfully added to <span class="font-semibold text-rose-500">Hamara airbnb</span>. It's now visible to travelers looking for a great place to stay.
+        </p>
+
+        <div class="space-y-4">
+            <a href="/" 
+               class="inline-block w-full bg-rose-500 text-white font-bold py-4 px-8 rounded-xl hover:bg-rose-600 active:scale-[0.98] transition-all shadow-md shadow-rose-200 text-lg">
+                Go to Homepage
+            </a>
+            
+            <a href="/host/add-home" class="inline-block text-sm font-medium text-gray-500 hover:text-rose-500 hover:underline transition">
+                Add another listing
+            </a>
+        </div>
+    </div>
+
 </body>
 </html>

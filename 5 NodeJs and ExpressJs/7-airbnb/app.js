@@ -11,8 +11,11 @@ const bodyParser = require('body-parser');
 //Local Modeule
 const hostRouter = require('./routers/hostRouter');
 const storeRouter = require('./routers/store');
+const rootDir = require('./util/pathutil');
 
 const app = express();
+
+app.use(express.static(path.join(rootDir, "public")));
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(storeRouter);
@@ -21,7 +24,7 @@ app.use("/host",hostRouter);
 
 app.use((req,res, next)=>{
     res.statusCode=404;
-    res.sendFile(path.join(__dirname, "views","404.html"));
+    res.sendFile(path.join(rootDir, "views","404.html"));
 });
 
 
