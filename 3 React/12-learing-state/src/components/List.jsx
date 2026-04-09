@@ -1,15 +1,21 @@
-const List = ({list}) => {
+import React from 'react'
+
+const List = ({studentArr}) => {
+
+    const arr = studentArr.map((user,index)=>{
+        return <li key={index}>{user.name}</li>;
+    })
 
   return (
-    <>
-      {!list || list.length === 0 ? <h2>No Students are here</h2>
-                                  : <h2>Here are the students</h2>}
-      
-      {list && list.length > 0 && <ol className="list-decimal ml-10 mt-5 text-xl">
-        {list.map(item => <li key={item}>{item}</li>)}
-      </ol>}
-    </>
-  );
-};
+    <div>
+        <h1 className="text-5xl">
+            List of Learners        
+        </h1>
+        <ol className="text-2xl">
+            {arr}
+        </ol>
+    </div>
+  )
+}
 
-export default List;
+export default List

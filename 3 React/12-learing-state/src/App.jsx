@@ -1,30 +1,55 @@
 import { useState } from "react";
-import List from "./components/List"
+import Create from "./components/Create";
+import Render from "./components/Render";
+import List from "./components/List";
 
 function App() {
 
-  const [studentArr, setStudentArr] = useState(["Nirmala", "Aman", "Akash", "Amanullah", "Abhijeet", "Gopi"]);
+  const [studentArr, setStudentArr] = useState([
+    {name : "Nirmala", age:12},
+    {name : "Aman", age:14},
+    {name : "Akash", age:15},
+    {name : "Amanullah", age:13},
+    {name : "Abhijeet", age:16},
+    {name : "Gopi", age:14}
+  ]);
 
-  console.log("Painting App Component");
-  console.log("State Value is:", studentArr);
+  const [fullname, setFullname] = useState("");
+  const [age,setAge] = useState();
+  
 
-  const onChangeHandler = (event) => {
-    if (event.key === "Enter") {
-      console.log(event.target.value);
-      const newArr = [event.target.value, ...studentArr];
-      event.target.value = '';
-      setStudentArr(newArr);
-      console.log(newArr);
-    }
-  }
+ 
+      
+
+  
 
   return (
     <>
-    <h1 className="text-5xl">
-      Learners of MERN Stack
-    </h1>
-    <List list={studentArr}></List>
-    <input type="text" placeholder="New Student Name" onKeyDown={onChangeHandler} />
+    <div style={{width:"80%", margin:"auto", backgroundColor:"lightgray",
+       padding:"20px", borderRadius:"10px", 
+       // 1. Position the box relative to the browser window
+        position: "absolute", 
+        top: "50%", 
+        left: "50%",
+        
+        // 2. Shift the box back by half of its own width/height
+        transform: "translate(-50%, -50%)", 
+        
+        // 3. Your original styling
+        // width: "80%", 
+        maxWidth: "500px", // Added to keep it from stretching too much
+        backgroundColor: "lightgray",
+        padding: "20px", 
+        borderRadius: "10px",
+       
+       }}>
+      <Create studentArr={studentArr}/>
+      <hr/>
+      <Render studentArr={studentArr} setStudentArr={setStudentArr} setFullname={setFullname} setAge={setAge}/>  
+      <hr/>
+      <List studentArr={studentArr}/> 
+    </div>
+     
   </>
 
   )
