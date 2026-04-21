@@ -8,11 +8,6 @@ var imagekit = new ImageKit({
 // class and passing the public key,
 //  private key and url endpoint as parameters
 
-
-
-
-
-
 function uploadFile(file){
     return new Promise((resolve,reject)=>{
         imagekit.upload({
