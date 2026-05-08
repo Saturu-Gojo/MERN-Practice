@@ -12,7 +12,7 @@ async function registerController(req,res){
             message : "Username already taken"
         })
     }
-    const user = userModel.create({
+    const user = await userModel.create({
         username,
         password: await bcrypt.hash(password, 10)
     })
@@ -33,7 +33,7 @@ async function loginController(req,res){
     const isUser = await userModel.findOne({username});
 
     if(!isUser){
-        res.status(400).json({
+        return res.status(400).json({
             message:"User not Found"
         })
     }
@@ -41,7 +41,7 @@ async function loginController(req,res){
     const isPassword = await bcrypt.compare(password, isUser.password)
 
     if(!isPassword){
-        res.status(400).json({
+        return res.status(400).json({
             message:"Invalid Password"
         })
     }
